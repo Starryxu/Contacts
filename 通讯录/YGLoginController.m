@@ -108,7 +108,6 @@
         if ([self.accountLbl.text isEqualToString:@"admin"] && [self.passwordLbl.text isEqualToString:@"123"]) {
             
             //存储偏好设置
-        
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //获取偏好设置
             
             //保存数据
@@ -143,7 +142,8 @@
     YGContactController *vc = segue.destinationViewController;
     //吧账号的文本值传给目标控制器的属性
     vc.titleName = self.accountLbl.text;
-    
+   
 }
+
 
 @end
