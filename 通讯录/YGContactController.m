@@ -35,7 +35,7 @@
 }
 
 
-//设置cell的分割线顶格显示
+#pragma mark - 设置cell的分割线顶格显示
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     
@@ -44,14 +44,13 @@
     self.tableView.layoutMargins = UIEdgeInsetsZero;
 }
 
-//
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.layoutMargins = UIEdgeInsetsZero;
 }
 
 
-//编辑的样式"插入和删除"
+#pragma mark - 编辑的样式"插入和删除"
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) { // 如果是第0行cell开启编辑之后它应该是插入
         return UITableViewCellEditingStyleInsert;
@@ -60,19 +59,19 @@
     }
 }
 
-//设置删除按钮的文字
+#pragma mark - 设置删除按钮的文字
 - (nullable NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"删除";
 }
 
 
-//开启或关闭cell编辑模式
+#pragma mark - 开启或关闭cell编辑模式
 - (IBAction)editBtnClick:(UIBarButtonItem *)sender {
     // 动态开关  编辑模式
     [self.tableView setEditing:!self.tableView.isEditing animated:YES];
 }
 
-//移动cell重新排序
+#pragma mark - 移动cell重新排序
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     
     // 交换数组中的对象位置
@@ -82,7 +81,7 @@
     [self saveContacts];
 }
 
-//滑动删除
+#pragma mark - 滑动删除
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) { // 如果是删除
@@ -105,7 +104,7 @@
 }
 
 
-//注销
+#pragma mark - 注销
 - (void)logoutBtnClick
 {
     //创建底部弹窗
@@ -151,7 +150,7 @@
 }
 
 
-//归档数据
+#pragma mark - 归档数据
 - (void)saveContacts
 {
     // 拼接归档文件路径
@@ -163,7 +162,7 @@
 
 
 
-//在跳转之前都会来调用此方法做跳转前的准备工作
+#pragma mark - 在跳转之前都会来调用此方法做跳转前的准备工作
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     // 获取目标控制器
@@ -201,7 +200,7 @@
 
 
 
-//代理方法
+#pragma mark - 代理方法
 -(void)editContactViewController:(YGEditContactController *)editVc contact:(YGContact *)contact
 {
     //刷新数据
@@ -211,7 +210,7 @@
 
 
 
-//数据源方法
+#pragma mark - 数据源方法
 //一组
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -234,7 +233,7 @@
 }
 
 
-//懒加载
+#pragma mark - 懒加载
 -(NSMutableArray *)contacts
 {
     if (_contacts == nil)//如果联系人数组属性为空

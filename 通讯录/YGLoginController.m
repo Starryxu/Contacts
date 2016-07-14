@@ -32,6 +32,7 @@
 
 @implementation YGLoginController
 
+#pragma mark - 读取偏好设置
 - (void)viewDidLoad {
     [super viewDidLoad];
     //给账号和密码文本框添加内容改变监听事件
@@ -63,13 +64,13 @@
     self.loginBtn.enabled = self.accountLbl.text.length > 0 && self.passwordLbl.text.length > 0;
 }
 
-//文本框内容改变时所做的事情
+#pragma mark -  文本框内容改变时所做的事情
 - (void)textEidtingChing {
     //当两个文本框中都有内容时设置登录按钮为可点击状态
     self.loginBtn.enabled = self.accountLbl.text.length > 0 && self.passwordLbl.text.length > 0;
 }
 
-//记住密码和自动登录状态的设置
+#pragma mark -  记住密码和自动登录状态的设置
 - (IBAction)selectStateBtn:(UIButton *)sender {
     
     if (sender == self.autoLoginBtn ) {//如果点击的是自动登录选项
@@ -89,7 +90,7 @@
     }
 }
 
-//登录按钮点击事件
+#pragma mark - 登录按钮点击事件
 - (IBAction)loginBtnClick {
     
     //结束编辑状态退出键盘
@@ -110,7 +111,7 @@
             //存储偏好设置
             NSUserDefaults *ud = [NSUserDefaults standardUserDefaults]; //获取偏好设置
             
-            //保存数据
+            // MARK: - 登录成功后保存数据
             
             [ud setObject:self.accountLbl.text forKey:KAccountText];//保存账号
             [ud setObject:self.passwordLbl.text forKey:KPasswordText];//保存密码
@@ -135,7 +136,7 @@
  *  属性传值
  */
 
-//sugue创建和设置好它的源控制器及目标控制器之后,来做跳转前的准备,会自动调用此方法
+#pragma mark - sugue创建和设置好它的源控制器及目标控制器之后,来做跳转前的准备,会自动调用此方法
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
     //获取目标控制器的对象
